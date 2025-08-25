@@ -79,3 +79,6 @@ Plugins/AIPerformanceComparation/*
 
 # Exclude user files
 *.user
+
+# Exclude VS config
+.vsconfig

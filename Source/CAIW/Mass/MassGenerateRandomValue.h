@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0c865c47945c668c1a05e054341ebdf49224247d1ef34a8aee23deb2ef6b9843
-size 971
+﻿// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "MassStateTreeTypes.h"
+#include "MassGenerateRandomValue.generated.h"
+
+USTRUCT()
+struct FMassMassGenerateRandomValueData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	FFloatInterval Interval = FFloatInterval(0, 1);
+
+	UPROPERTY(EditAnywhere, Category = Output)
+	float RandomResult = 0;
+};
+
+/** Generate random value in the tweakable diapason */
+USTRUCT(meta = (DisplayName = "Generate Random Value"))
+struct FMassGenerateRandomValue : public FMassStateTreeTaskBase
+{
+	GENERATED_BODY()
+
+	using FInstanceDataType = FMassMassGenerateRandomValueData;
+
+protected:
+	virtual const UStruct* GetInstanceDataType() const override { return FInstanceDataType::StaticStruct(); }
+	virtual EStateTreeRunStatus EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition) const override;
+};

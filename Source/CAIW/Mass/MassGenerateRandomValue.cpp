@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0f4ee8758f3f5ea5c71bc2c671dc79ccd2f55dc44c5f9a62e7ae00a5cb222ee4
-size 533
+﻿// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "MassGenerateRandomValue.h"
+
+#include "StateTreeExecutionContext.h"
+
+EStateTreeRunStatus FMassGenerateRandomValue::EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition) const
+{
+	FInstanceDataType& InstanceData = Context.GetInstanceData(*this);
+	InstanceData.RandomResult = FMath::RandRange(InstanceData.Interval.Min, InstanceData.Interval.Max);
+	return EStateTreeRunStatus::Succeeded;
+}

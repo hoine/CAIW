@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9ef420d5faba4c09b62dfd9a5fe8bc78b8e025a08d9305044823ab525b485c41
-size 874
+// Copyright Epic Games, Inc. All Rights Reserved.
+
+using UnrealBuildTool;
+
+public class CAIW : ModuleRules
+{
+	public CAIW(ReadOnlyTargetRules Target) : base(Target)
+	{
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+	
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
+			"Core", 
+			"CoreUObject", 
+			"Engine", 
+			"InputCore", 
+			"EnhancedInput"
+		});
+
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"MassAIBehavior",
+			"StateTreeModule"
+		});
+
+		// Uncomment if you are using Slate UI
+		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
+		
+		// Uncomment if you are using online features
+		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
+
+		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
+	}
+}
